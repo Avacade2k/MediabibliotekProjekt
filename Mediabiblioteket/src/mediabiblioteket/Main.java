@@ -62,8 +62,4 @@ public class Main extends Application{
 		launch();
     }
 
-	public static Scene getScene() {
-		return scene;
-	}
-
 }	
