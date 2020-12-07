@@ -29,7 +29,7 @@ public class LibraryController
 	/**
 	 * Konstruktor som ser till att boota systemet med samtliga Media, Borrowers, Borrowed och MediaSearchResults i ArrayList 
 	 */
-	LibraryController()
+	public LibraryController()
 	{
 		allMediaObjects = new ArrayList<Media>(24);
 		allBorrowers = new ArrayList<Borrower>();

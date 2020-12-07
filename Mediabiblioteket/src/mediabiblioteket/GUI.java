@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /** 
- * Huvudfönstret i Bibliotekssystemet som användaren interagerar med för att bl.a. söka efter
- * olika mediatyper och låna en specifik media 
+ * HuvudfÃ¶nstret i Bibliotekssystemet som anvÃ¤ndaren interagerar med fÃ¶r att bl.a. sÃ¶ka efter
+ * olika mediatyper och lÃ¥na en specifik media 
  */
 public class GUI extends JFrame implements ActionListener
 {
@@ -62,8 +62,8 @@ public class GUI extends JFrame implements ActionListener
 	LibraryController theController;
 	
 	/**
-	 * Konstruktorn som skapar hela layouten för inloggningsrutan samt 
-	 * huvudfönstret med de olika grafiska komponenterna som användaren kan interagera med via Controller klassen. 
+	 * Konstruktorn som skapar hela layouten fÃ¶r inloggningsrutan samt 
+	 * huvudfÃ¶nstret med de olika grafiska komponenterna som anvÃ¤ndaren kan interagera med via Controller klassen. 
 	 */
 	public GUI()
 	{
@@ -175,7 +175,7 @@ public class GUI extends JFrame implements ActionListener
 	
 	/**
 	 * Kollar vid inloggningen ifall om en person finns registrerad i Bibliotekssystemet.
-	 * @param userName. Personnummer för låntagaren
+	 * @param userName. Personnummer fÃ¶r lÃ¥ntagaren
 	 * @return. True om personnummer existerar, annars False.
 	 */
 	public void login(String userName)
@@ -208,7 +208,7 @@ public class GUI extends JFrame implements ActionListener
 		
 	}
 	/**
-	 * Rensar Textarean från all resultat
+	 * Rensar Textarean frÃ¥n all resultat
 	 */
 	public void clearTheTextArea()
 	{
@@ -216,7 +216,7 @@ public class GUI extends JFrame implements ActionListener
 	}
 	
 	/**
-	 * Sätter text till Textarean
+	 * SÃ¤tter text till Textarean
 	 * @param addText. Texten som ska till i Textarean
 	 */
 	public void setTheTextArea(String addText)
@@ -224,11 +224,11 @@ public class GUI extends JFrame implements ActionListener
 		theTextAreaModel.addElement(addText);
 	}
 	/**
-	 * Lyssnar på Event ifrån användaren.Här kan låntagaren välja att 
-	 * 1.Söka bland media
-	 * 2.Söka djupgående information om ett visst media
-	 * 3.Låna ett visst media
-	 * 4.Returnera ett lånat media
+	 * Lyssnar pÃ¥ Event ifrÃ¥n anvÃ¤ndaren.HÃ¤r kan lÃ¥ntagaren vÃ¤lja att 
+	 * 1.SÃ¶ka bland media
+	 * 2.SÃ¶ka djupgÃ¥ende information om ett visst media
+	 * 3.LÃ¥na ett visst media
+	 * 4.Returnera ett lÃ¥nat media
 	 **/
 	@Override
 	public void actionPerformed(ActionEvent e)
@@ -328,7 +328,7 @@ public class GUI extends JFrame implements ActionListener
 		
 	}
 	/**
-	 * Programstarten som öppnar applikationen
+	 * Programstarten som Ã¶ppnar applikationen
 	 */
 	public static void main(String[] arguments)
 	{
