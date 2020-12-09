@@ -2,37 +2,51 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import java.io.IOException;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import mediabiblioteket.GUIController;
 import mediabiblioteket.LibraryController;
 import mediabiblioteket.LoginController;
+import mediabiblioteket.Main;
 
 class mediabiblioteketTest {
 	
-	LoginController login;
-	GUIController gui;
-	LibraryController theController;
+	LoginController login = new LoginController();;
+	GUIController gui = new GUIController();
+	LibraryController theController = new LibraryController();
 	
-	@BeforeEach
-	void setupGUI() {
-		theController = new LibraryController();
-		login = new LoginController();
-		gui = new GUIController();
-		Application.launch();
+	@Before
+	void startGUI() throws IOException {
+		new Thread() {
+            @Override
+            public void run() {
+                javafx.application.Application.launch(Main.class);
+            }
+        }.start();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mediabiblioteket/Login.fxml"));
+        fxmlLoader.setController(login);
+		Scene scene = new Scene(fxmlLoader.load(),500,750);  //setting size of the window
+		Stage testStage = new Stage();
+		testStage.setScene(scene);
+		testStage.show();
 	}
 	
-	@AfterEach
-    public void tearDown() throws Exception {
-        System.exit(0);
+	@After
+    void tearDown() throws Exception {
+		System.out.println("Ending");
+		System.exit(0);
     }
 	
 	@Test
 	public void loginSuccessful() {
-		login.user.setText("bob");
+		login.user.setText("900118-5555");
 		login.login();
 		assertTrue(login.isSuccessful());
 	}
@@ -42,6 +56,13 @@ class mediabiblioteketTest {
 		login.user.setText("bob");
 		login.login();
 		assertFalse(login.isSuccessful());
+	}
+	
+	@Test
+	public void searchMediaByString() {
+		String test = "Bok";
+		theController.searchMediaAllByString(test);
+		assertTrue(gui.items != null);
 	}
 
 }

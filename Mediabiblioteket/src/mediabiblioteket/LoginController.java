@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 public class LoginController {
 	
 	LibraryController theController;
+	String userName;
 	
 	@FXML
 	public TextField user;
@@ -22,7 +23,7 @@ public class LoginController {
 	
 	public boolean isSuccessful() {
 		System.out.println("Log in request");
-		String userName = user.getText();
+		userName = user.getText();
 		theController = new LibraryController();
 		if(theController.checkUserInput(userName))
 		{

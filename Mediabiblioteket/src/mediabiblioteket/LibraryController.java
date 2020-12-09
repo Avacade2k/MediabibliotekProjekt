@@ -19,6 +19,7 @@ import collections.*;
 public class LibraryController
 {
 	Borrower currentBorrower;
+	GUIController guiCon;
 	GUI theGUI;
 	ArrayList<Media> allMediaObjects;
 	ArrayList<String> borrowed;
@@ -31,6 +32,7 @@ public class LibraryController
 	 */
 	public LibraryController()
 	{
+		guiCon = new GUIController();
 		allMediaObjects = new ArrayList<Media>(24);
 		allBorrowers = new ArrayList<Borrower>();
 		borrowed = new ArrayList<String>();
@@ -53,6 +55,17 @@ public class LibraryController
 		boot();
 	}
 	
+	LibraryController(GUIController parGUI)
+	{
+		guiCon = parGUI;
+		allMediaObjects = new ArrayList<Media>(25);
+		allBorrowers = new ArrayList<Borrower>();
+		borrowed = new ArrayList<String>();
+		mediaSearchResults = new LinkedList<Media>();
+
+		boot();
+	}
+
 
 	/**
 	 * Kollar om användaren matar in data i felaktig format och meddelar om detta.
@@ -309,17 +322,17 @@ public class LibraryController
 			if (tempSearch.getTitle().toLowerCase().contains(theSearchString))
 			{
 				mediaSearchResults.add(tempSearch);
-				theGUI.setTheTextArea(tempSearch.toString());
+				guiCon.addElement(tempSearch.toString());
 			}
 			else if (tempSearch.getObjectID().equals(theSearchString))
 			{
 				mediaSearchResults.add(tempSearch);
-				theGUI.setTheTextArea(tempSearch.toString());
+				guiCon.addElement(tempSearch.toString());
 			}
 			else if(tempSearch.mediaType.toLowerCase().equals(theSearchString))
 			{
 				mediaSearchResults.add(tempSearch);
-				theGUI.setTheTextArea(tempSearch.toString());
+				guiCon.addElement(tempSearch.toString());
 			}
 			else if(tempSearch.mediaType.equals("DVD"))
 			{
@@ -327,7 +340,7 @@ public class LibraryController
 				if(tempSearchDVD.getActors().toString().toLowerCase().contains(theSearchString))
 				{
 					mediaSearchResults.add(tempSearch);
-					theGUI.setTheTextArea(tempSearch.toString());
+					guiCon.addElement(tempSearch.toString());
 				}
 			}
 			else if(tempSearch.mediaType.equals("Bok"))
@@ -336,7 +349,7 @@ public class LibraryController
 				if(tempSearchDVD.getAuthor().toString().toLowerCase().contains(theSearchString))
 				{
 					mediaSearchResults.add(tempSearch);
-					theGUI.setTheTextArea(tempSearch.toString());
+					guiCon.addElement(tempSearch.toString());
 				}
 			}
 		}
@@ -383,7 +396,7 @@ public class LibraryController
 			if (tempSearch.getTitle().toLowerCase().contains(theSearchString.toLowerCase()))
 			{
 				mediaSearchResults.add(tempSearch);
-				theGUI.setTheTextArea(tempSearch.toString());
+				guiCon.addElement(tempSearch.toString());
 			}
 
 		}
@@ -576,7 +589,7 @@ public class LibraryController
 			{
 				Media theMedia = getMedia(ID);
 				mediaSearchResults.add(theMedia);
-				theGUI.setTheTextArea(theMedia.toString());
+				guiCon.addElement(theMedia.toString());
 			}
 		}
 		
