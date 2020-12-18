@@ -48,6 +48,14 @@ public class LoginController {
 		}
 	}
 	
+	public String getUser() {
+		return userName;
+	}
+	
+	public void setUser(String userName) {
+		this.userName = userName;
+	}
+	
 	public void cancel() {
 		System.out.println("Window close request");
 		Main.alertOnExit();

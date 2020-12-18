@@ -46,14 +46,14 @@ class mediabiblioteketTest {
 	
 	@Test
 	public void loginSuccessful() {
-		login.user.setText("900118-5555");
+		login.setUser("900118-5555");
 		login.login();
 		assertTrue(login.isSuccessful());
 	}
 	
 	@Test
 	public void loginInvalid() {
-		login.user.setText("bob");
+		login.setUser("bob");
 		login.login();
 		assertFalse(login.isSuccessful());
 	}
