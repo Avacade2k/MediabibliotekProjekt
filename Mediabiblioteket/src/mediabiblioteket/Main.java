@@ -15,6 +15,7 @@ public class Main extends Application{
 	
 	static Stage stage;
 	static Scene scene;
+	GUIController controller;
 
 	@Override
 	public void start(Stage main) throws IOException {
@@ -37,7 +38,9 @@ public class Main extends Application{
 	
 	public void changeScene() {
 		try {
-			Parent root=FXMLLoader.load(getClass().getResource("GUI.fxml"));//loading FXML
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI.fxml"));
+			Parent root= loader.load();//loading FXML
+			controller = loader.getController();
 			Scene scene = new Scene(root,500,750);  //setting size of the window 
 			stage.setScene(scene);  // setting scene
 			stage.setTitle("Mediabiblioteket"); //Title of the window
@@ -56,6 +59,10 @@ public class Main extends Application{
 		alert.setContentText("Hope to see you again!");
 
 		alert.showAndWait();
+	}
+	
+	public GUIController getController() {
+		return controller;
 	}
 	
 	public static void main(String[] args){
